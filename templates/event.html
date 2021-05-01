@@ -1,0 +1,137 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Событие {{event.title}}</title>
+{% endblock %}
+
+
+
+<body>
+
+
+{% block body %}
+
+
+<div name="global"  style=" display: flex; flex-direction: row; justify-content: space-between; height: 100%; width: 100%; margin-top: 30px">
+
+	
+
+
+
+    <div class="description" >
+        <h1>Событие</h1>
+		
+		{% if event.special %}
+        <span class="material-icons special">stars</span>
+        {% endif %}
+
+            <p>Название: {{event.title}}</p>
+            <p>Место: {{event.place}}</p>
+            <p>Дата: {{event.dates}}</p>
+            <p>Контакты: {{event.contacts}}</p>
+            
+			<a href="{{ url_for('user' ,id=event.user_id ) }}">
+						
+						
+						
+
+                        <p class="name">
+
+                            {{event.user_fullname}}
+
+                        </p>
+
+                        </a>
+			
+			
+            <p>Описание: {{event.content}}</p>
+
+
+        <form action="" method="POST">
+
+
+
+            <button type="submit">Я в деле!</button>
+        </form>
+
+        <p style="color: red"> {{msg}} </p>
+
+    </div>
+
+
+    <div class="participants" >
+        <h1>Участники</h1>
+
+        <div id="div2" style="max-height:100%; overflow:auto;border:5px solid #006ef1;">
+            <div id="div3" style="height:500px;border:6px solid #f9b200; background-color: whitesmoke">
+                {% if participants %}
+
+
+                    {% for participant in participants %}
+
+                        <a href="{{ url_for('user' ,id=participant.id ) }}">
+						
+						
+						
+
+                        <p class="name">
+
+                            {{participant.fullname}}
+
+                        </p>
+
+                        </a>
+                    {% endfor %}
+
+
+                {% else %}
+                    <h1> Будьте первым в списке участников!</h1>
+
+                {% endif %}
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Add your site or application content here -->
+
+
+
+
+
+
+
+
+
+{% endblock %}
+</body>
+

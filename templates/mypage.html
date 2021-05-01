@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{eventstitle}}</title>
+{% endblock %}
+
+
+
+
+
+
+<body>
+{% block body %}
+
+
+<div class="global" >
+
+<div class="welcomepage">
+    <h2>Добро пожаловать, {{user}}</h2> 
+
+    <h3> Изменить профиль</h3>
+
+    <div class="editinfo">
+        <form action="mypage/profile">
+            <input type="submit" value="Редактировать пользователя" />
+        </form>
+
+        <form action="mypage/unsign">
+            <input type="submit" value="Отказаться от событий" />
+        </form>
+
+        <form action="mypage/delete">
+            <input type="submit" value="Удалить события" />
+        </form>
+
+    
+    
+    </div>
+
+    
+
+</div>
+
+
+
+{% endblock %}
+</body>

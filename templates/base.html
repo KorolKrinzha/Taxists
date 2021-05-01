@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <link href="{{ url_for('static', filename='images/taxistspng.png') }}" rel="icon">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#fafafa">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    
+
+
+
+
+    {% block head %} {% endblock %}
+</head>
+<body>
+
+
+
+
+
+
+    <div class="heads">
+
+        <a class="headstext" href="{{ url_for('events') }}">Проекты</a>
+        <a class="headstext" href="{{ url_for('shop') }}">Магаз</a>
+        <a class="headstext" href="{{ url_for('coffee') }}"> Айтикафе  </a>
+        <a class="headstext" href="{{ url_for('events') }}" >События</a>
+
+
+
+
+    </div >
+
+    <div>
+
+
+    </div>
+
+
+
+
+
+
+
+    {% block body %} {% endblock %}
+</body>
+</html>

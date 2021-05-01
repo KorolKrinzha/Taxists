@@ -1,0 +1,166 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Пользователь {{user.fullname}}</title>
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+
+<div name="global"  style=" display: flex; 
+flex-direction: row; 
+justify-content: space-between;
+height: inherit;
+width: inherit;
+font-family: Arial, Helvetica, sans-serif;
+background: whitesmoke;
+
+">
+
+
+
+
+        <div class="userinfo" >
+            <div name="namelayout" style="display: flex; flex-direction: row; justify-content: start">
+            <h1>{{user.fullname}}</h1>            
+
+            {% if user.do %}
+            <span class="material-icons admin">done</span>
+            
+            {% endif %}
+
+
+            
+            {% if managable %}
+            <a href="{{ url_for('mypage') }}">
+            <span class="material-icons settings">settings</span>
+            </a>
+            
+            {% endif %}
+
+
+            
+
+            </div>
+
+            <div class="usernames">
+
+            
+
+            
+            <p style="color: #006EF1"> Никнейм пользователя: </p>
+            <p id="nickname">{{user.username}}</p>
+
+            
+            
+            
+            
+            </div>
+
+            
+
+            <div class= "eventmanage">
+            
+            <h1>Курируемые события</h1>
+
+            <div id="div2" style="max-height:100%; overflow:auto; solid;">
+                <div id="div3" style="height:100%; solid;">
+                {% if managed_events %}
+
+                    {% for managed_event in managed_events %}
+
+
+
+
+
+                    <a href="{{ url_for('event' ,event_id=managed_event.event_id ) }}">
+
+                        <p> {{managed_event.title}} </p>
+
+                    </a>
+
+
+
+
+                    {% endfor %}
+
+                    {% else %}
+                    <h2> Скоро здесь будут события, честно...</h2>
+
+                {% endif %}
+
+
+
+                </div>
+            </div>
+
+            
+
+
+
+            </div> 
+
+            
+
+
+
+
+
+        </div>
+
+
+        <div class="eventspart">
+            <h1>Активности пользователя</h1>
+
+            <div id="div2" style="max-height:100%; overflow:auto; solid;">
+                <div id="div3" style="height:100%%; solid;">
+
+
+                {% if user_events %}
+                   {% for user_event in user_events %}
+
+
+
+
+
+                    <a href="{{ url_for('event' ,event_id=user_event.event_id ) }}">
+
+                        <p> {{user_event.event_title}} </p>
+
+                    </a>
+
+
+
+
+                    {% endfor %}
+                
+                {% else %}
+                    <h2> Событий еще не завезли...</h2>
+
+                {% endif %}
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

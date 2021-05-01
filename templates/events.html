@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{eventstitle}}</title>
+{% endblock %}
+
+
+
+
+
+
+<body>
+{% block body %}
+
+
+<div class="global" >
+    <img src="{{ url_for('static', filename='images/info.png') }}" style="width: inherit; height:inherit"></div>
+
+<div class="centrist"  style="margin-top: 100px">
+
+
+
+
+
+    <form action='' method='POST'>
+        <p class="headstext" style="text-align: center; font-size: 35px; font-family: Montserrat">Создайте событие сейчас!</p>
+        <div class="formitem" >
+            <label for="title" > Название</label>
+
+            <input type='text' name='title' id='title' class="neweventform" required maxlength="60">
+        </div>
+
+
+        <div class="formitem" style="display: flex; flex-direction: row;">
+            <p style="margin-right: 10px" > Место   </p>
+            <select id="place" name='place' type="text" class="neweventform" style="width: 100px; color: #006EF1; height: 30px; text-align: center" required;  >
+                <option selected value="" disabled selected></option>
+                <option value="Солянка" >Солянка</option>
+                <option value="Ляля">Ляля</option>
+                <option value="Колобок">Колобок</option>
+                <option value="БХ">БХ</option>
+
+            </select>
+        </div>
+
+        <div class="formitem">
+            <label for="dates">Дата</label>
+            <input  name='dates' id='dates' type="date" class="neweventform" required>
+        </div>
+
+        <div class="formitem">
+            <label for="contacts">Контакты</label>
+            <textarea  type='text' name='contacts' id='contacts' class="neweventform"
+                       wrap="soft" style="height: 100px" required></textarea>
+        </div>
+
+        <div class="formitem">
+            <label for="content">Описание</label>
+            <textarea type='text' name='content' id='content' class="neweventform"
+                      wrap="soft" style="height: 100px" required></textarea>
+        </div>
+
+
+        <input type='submit' class="createevent" value='Создать!'>
+    </form>
+	
+	
+	<a href="{{ url_for('login') }}">
+	<p style="color: red;  text-align: center;
+    margin: 0 auto;
+    display: block;"> {{msg}} </p>
+	</a>
+	
+
+
+</div>
+
+
+
+
+<div class="events">
+    {% for event in events %}
+
+    <div class="eventbody"  >
+        <!--        onclick="location.href=' {{ url_for("shop") }}' "-->
+        <p class="eventtitle"> {{event.title}} </p>
+        {% if event.special %}
+        <span class="material-icons special">stars</span>
+        {% endif %}
+
+        <div style="margin-left: 30px; align-items: center; margin-top: 20px">
+
+
+
+                <div  class="eventresults">
+                    <p> Место: </p>
+                    <p class = "eventcontext" >{{event.place}}</p>
+                </div>
+
+
+
+            <div  class="eventresults" style="margin-top: 40px">
+
+                <p> Время: </p>
+                <p class = "eventcontext" >{{event.dates}}</p>
+            </div>
+
+
+
+
+            <form action="events/{{event.event_id}}" method="get" style="display: flex; justify-content: flex-end">
+                <input type="submit" value="Участвовать!"
+                       name="Submit" id="Gotoevent" class="gotoevent"/>
+            </form>
+
+
+
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
+</body>
